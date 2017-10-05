@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+
+		<title>tdjs/glitch</title>
+
+		<style>
+			body { 
+				margin: 0; 
+				overflow: hidden;
+				background-color: black;
+			}
+			canvas { 
+				width: 100%; 
+				height: 100%;
+				cursor: none;
+			}
+			div#info {
+				width: 100%;
+				position: fixed;
+				top: 0;
+				z-index: 999;
+			}
+			div#footer {
+				width: 100%;
+				position: fixed;
+				bottom: 0;
+				z-index: 999;
+			}
+			p {
+				font-size: 0.75em;
+				font-family: monospace;
+			}
+			p, input {
+				color: white;
+				display: inline-block;
+				float: left;
+				padding: 0px 10px;
+			}
+			input#thresholdSlider {
+				width: 150px;
+				background-color: rgba(0, 0, 0, 0);
+				margin: 11px 0px;
+			}
+			a {
+				color: white;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			div#barContainer {
+				width: 150px;
+				height: 8px;
+				border: 1px solid white;
+				border-radius: 50px;
+				margin: 11px 10px;
+				display: inline-block;
+				position: absolute;
+			}
+			div#bar {
+				background-color: white;
+				width: 100%;
+				height: 100%;
+			}
+			div#thresholdIndicator {
+				position: absolute;
+				color: white;
+			}
+			p#volumeVal {
+				margin-left: 170px;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="css/thumb.css">
+	</head>
+	<body>
+		<div id="info">
+			<p>threshold:</p>
+			<input type="range" min="0" max="1" step="0.05" id="thresholdSlider">
+			<p id="thresholdVal"></p>
+			<p>//</p>
+			<p>levels:</p>
+			<div id="barContainer">
+				<div id="bar"></div>
+				<div id="thresholdIndicator"><b>^</b></div>
+			</div>
+			<p id="volumeVal"></p>
+			<p style="float: right">three.js glitch visualiser // <a href="https://tdjs.tech/">tom snelling</a> // 2017 // <a href="about.html">about</a></p>
+		</div>
+		<div id="footer">
+			<p>[z/x] decrement/increment threshold // [c] toggle glitch // [v] trigger glitch // [b] hide gui // [space] change shape // [f11] fullscreen</p>
+		</div>
+
+		<script src="js/three.min.js"></script>
+		
+		<script src="js/shaders/CopyShader.js"></script>
+		<script src="js/shaders/DigitalGlitch.js"></script>
+		<script src="js/shaders/DotScreenShader.js"></script>
+		<script src="js/shaders/RGBShiftShader.js"></script>
+
+		<script src="js/postprocessing/EffectComposer.js"></script>
+		<script src="js/postprocessing/RenderPass.js"></script>
+		<script src="js/postprocessing/MaskPass.js"></script>
+		<script src="js/postprocessing/ShaderPass.js"></script>
+		<script src="js/postprocessing/GlitchPass.js"></script>
+
+		<script src="js/volume-meter.js"></script>
+
+		<script src="js/scene.js"></script>
+	</body>
+</html>
